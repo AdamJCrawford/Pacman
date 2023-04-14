@@ -8,11 +8,10 @@ struct position
 };
 
 class Node {
+public:
     position pos;
-
     Node(position tmp_pos);
     Node(int x, int y);
-    ~Node();
 };
 
 #endif

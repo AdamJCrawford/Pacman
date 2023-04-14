@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include "node.h"
+#include <vector>
 
 class Map
 {

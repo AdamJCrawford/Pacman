@@ -10,8 +10,3 @@ Node::Node(int x, int y)
 {
     position tmp_pos = { x, y };
 }
-
-
-Node::~Node()
-{
-}

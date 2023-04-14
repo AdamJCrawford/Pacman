@@ -9,6 +9,9 @@
 
 int main()
 {
-    std::cout << "Everything loaded" << "\n";
+    position t = { 0, 0 };
+    Node     testing(t);
+
+    std::cout << "Code is running" << std::endl;
     return 0;
 }
