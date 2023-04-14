@@ -5,6 +5,10 @@
 
 class GameObject {
     position pos;
+public:
+    position get_position() {}
+
+    null set_position(position) {}
 };
 
 #endif
