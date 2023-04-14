@@ -1,6 +1,8 @@
 #include "map.h"
+#include "node.h"
 
-Map::Map(vector<vector<node> > tmp_map)
+
+Map::Map(std::vector<std::vector<Node> > tmp_map)
 {
     map = tmp_map;
 }

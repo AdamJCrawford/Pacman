@@ -1,11 +1,13 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include "node.h"
+
 class Map
 {
-    vector < vector < node >> map;
+    std::vector<std::vector<Node> > map;
 
-    Map(vecotr < vector < node >>);
+    Map(std::vector<std::vector<Node> >);
     ~Map();
 };
 

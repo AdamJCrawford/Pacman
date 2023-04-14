@@ -1,7 +1,10 @@
 #ifndef FOOD_H
 #define FOOD_H
 
-class Eatable: public gameobject {
+#include "gameobject.h"
+
+class Eatable : public GameObject {
+    int i = 0;
 };
 
 #endif

@@ -7,7 +7,6 @@
 #include "node.h"
 #include "sprite.h"
 
-
 int main()
 {
     std::cout << "Everything loaded" << "\n";
