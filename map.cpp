@@ -1,5 +1,5 @@
-#include "map.h"
-#include "node.h"
+#include "headers/map.h"
+#include "headers/node.h"
 
 
 Map::Map(std::vector<std::vector<Node> > tmp_map)

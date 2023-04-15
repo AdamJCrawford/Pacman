@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
 
-#include "food.h"
-#include "gameobject.h"
-#include "map.h"
-#include "node.h"
-#include "sprite.h"
+#include "headers/food.h"
+#include "headers/gameobject.h"
+#include "headers/map.h"
+#include "headers/node.h"
+#include "headers/sprite.h"
 
 int main()
 {

@@ -1,4 +1,4 @@
-#include "node.h"
+#include "headers/node.h"
 
 Node::Node(position tmp_pos)
 {

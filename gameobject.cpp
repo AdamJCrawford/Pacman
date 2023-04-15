@@ -1,4 +1,4 @@
-#include "gameobject.h"
+#include "headers/gameobject.h"
 
 
 GameObject::get_position()
