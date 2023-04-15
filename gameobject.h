@@ -8,7 +8,7 @@ class GameObject {
 public:
     position get_position() {}
 
-    null set_position(position) {}
+    void set_position(position) {}
 };
 
 #endif

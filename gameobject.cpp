@@ -1,12 +1,12 @@
 #include "gameobject.h"
 
 
-gameobject::set_position()
+GameObject::get_position()
 {
     return pos;
 }
 
-gameobject::get_position(position tmp_pos)
+GameObject::set_position(position tmp_pos)
 {
     pos = tmp_pos;
 }
