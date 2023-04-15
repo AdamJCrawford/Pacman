@@ -1,14 +1,12 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "node.h"
-
-class GameObject {
+class GameObject{
     position pos;
 public:
-    position get_position() {}
+    virtual position get_position() = 0;
 
-    null set_position(position) {}
+    virtual void set_position(position) = 0;
 };
 
 #endif
