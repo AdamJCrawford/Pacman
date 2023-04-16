@@ -25,6 +25,9 @@ public:
     virtual position get_position();
 
     virtual std::string get_name();
+
+    virtual sf::CircleShape draw();
 };
 
 #endif
+ 

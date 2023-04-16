@@ -2,8 +2,10 @@
 #include "headers/sprite.h"
 #include "headers/ghost.h"
 
-Ghost::Ghost()
+
+Ghost::Ghost(int x, int y, int tmp_ghost_num)
 {
+    ghost_num = tmp_ghost_num;
     to_draw.setRadius(10.f);
     name = "Ghost";
     switch (ghost_num)
@@ -32,13 +34,6 @@ Ghost::Ghost()
            break;
        }
     }
-}
-
-
-Ghost::Ghost(int x, int y, int tmp_ghost_num)
-{
-    ghost_num = tmp_ghost_num;
-    Ghost();
     position tmp_pos;
 
     tmp_pos.x = x;

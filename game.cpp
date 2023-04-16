@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+// #include <vector>
 #include <SFML/Graphics.hpp>
 
 #include "headers/globals.h"
@@ -19,9 +19,8 @@ int main()
     // vertical sync is not supported by my device
     //window.setVerticalSyncEnabled (true);
 
-    Cookie cookie(50, 50);
-
-    std::cout << cookie.pos.x << ' ' << cookie.pos.y << ' ' << cookie.get_name() << "\n";
+    Map map;
+    map.create_map();
     // Pacdot pacdot(20, 20);
 
     // .isOpen() method is from window class; we run a loop as long as the window is open
@@ -39,17 +38,28 @@ int main()
                 window.close();
             }
             // esc key is pressed
-            else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
-            {
-                window.close();
-            }
-
-            // else
+            // else if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
             // {
-            //     // send keyboard event to packman
+            //     window.close();
             // }
+
             window.clear();
-            window.draw(cookie.draw());
+            for(int i = 0; i < 25; i++)
+            {
+                for(int j = 0; j < 24; j++)
+                {
+                    std::cout << map.map[i][j].get_pos().x << ' ' << map.map[i][j].get_pos().y << "\n";
+                    if(map.map[i][j].get_current_obj())
+                    {
+                        std::cout << map.map[i][j].get_current_obj()->name << "\n";
+                        window.draw(map.map[i][j].get_current_obj()->draw());
+                    }
+                    
+                                    
+                }
+            }
+            
+            // window.draw(cookie.draw());
             // window.draw(pacdot.draw());
 
             window.display();
@@ -60,3 +70,4 @@ int main()
     window.close();
     return 0;
 }
+  

@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 #include "headers/globals.h"
 #include "headers/gameobject.h"
@@ -11,7 +12,7 @@
 #include "headers/sprite.h"
 #include "headers/ghost.h"
 #include "headers/pacman.h"
-
+ 
 Map::Map()
 {
     string_map = {
@@ -46,12 +47,11 @@ Map::Map()
 
 void Map::create_map()
 {
-    std::vector<std::vector<Node> > tmp_map;
 
-    for (int i = 0; i < map_length; i++)
+    for (int i = 0; i < 24; i++)
     {
         std::vector<Node> tmp_row;
-        for (int j = 0; j < map_width; j++)
+        for (int j = 0; j < 25; j++)
         {
             switch (string_map[i][j])
             {
@@ -123,9 +123,14 @@ void Map::create_map()
                    tmp_row.push_back(Node(i, j, tmp_gate));
                }
                break;
+            default:
+                {
+                    std::cout << "default reached" << std::endl;
+                    break;
+                }
             }
+            
         }
-        tmp_map.push_back(tmp_row);
+        map.push_back(tmp_row);
     }
-    map = tmp_map;
 }

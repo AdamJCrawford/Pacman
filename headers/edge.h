@@ -3,7 +3,6 @@
 
 class Edge : public GameObject {
 public:
-    Edge();
     Edge(int, int);
 
     void update();

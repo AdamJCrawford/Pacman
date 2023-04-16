@@ -4,7 +4,6 @@
 class Ghost : public Sprite {
     int ghost_num;
 public:
-    Ghost();
     Ghost(int, int, int);
 
     void update();

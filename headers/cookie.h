@@ -7,8 +7,6 @@
 class Cookie : public Food
 {
 public:
-    sf::CircleShape to_draw_tmp;
-    Cookie();
     Cookie(int, int);
 
     void update();

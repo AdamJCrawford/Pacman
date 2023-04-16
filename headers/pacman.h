@@ -4,7 +4,6 @@
 class Pacman : public Sprite {
 public:
 
-    Pacman();
     Pacman(int, int);
 
     void update();

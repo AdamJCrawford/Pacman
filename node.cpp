@@ -19,6 +19,7 @@ Node::Node(int x, int y, GameObject *tmp_current_obj = nullptr)
 
 Node::~Node()
 {
+    current_obj = nullptr;
     delete current_obj;
 }
 
@@ -33,3 +34,4 @@ GameObject *Node::get_current_obj()
 {
     return current_obj;
 }
+ 

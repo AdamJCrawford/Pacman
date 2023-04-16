@@ -5,7 +5,6 @@ class Pacdot: public Food
 {
 public:
 
-    Pacdot();
     Pacdot(int, int);
 
     void update();

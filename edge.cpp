@@ -2,17 +2,13 @@
 #include "headers/gameobject.h"
 #include "headers/edge.h"
 
-Edge::Edge()
-{
-    to_draw.setRadius(10.f);
-    to_draw.setFillColor(sf::Color::Blue);
-    name = "Edge";
-}
-
 
 Edge::Edge(int x, int y)
 {
-    Edge();
+    to_draw.setRadius(10.f);
+    to_draw.setFillColor(sf::Color::Blue);
+    
+    name = "Edge";
     position tmp_pos;
 
     tmp_pos.x = x;
@@ -32,3 +28,4 @@ sf::CircleShape Edge::draw()
 {
     return to_draw;
 }
+ 
