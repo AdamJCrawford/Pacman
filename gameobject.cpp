@@ -1,22 +1,36 @@
 #include "headers/gameobject.h"
 
 
-GameObject::get_position()
+position GameObject::get_position()
 {
-    return position;
+    return pos;
 }
 
-GameObject::set_position(position tmp_pos)
+
+void GameObject::set_position(position tmp_pos)
 {
     pos = tmp_pos;
 }
 
-GameObject::get_name()
+
+void GameObject::set_position(int x, int y)
+{
+    position tmp_pos;
+
+    tmp_pos.x = x;
+    tmp_pos.y = y;
+
+    pos = tmp_pos;
+}
+
+
+std::string GameObject::get_name()
 {
     return name;
 }
 
-GameObject::set_name(std::string tmp_name)
+
+void GameObject::set_name(std::string tmp_name)
 {
     name = tmp_name;
 }

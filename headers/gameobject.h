@@ -2,19 +2,27 @@
 #define GAMEOBJECT_H
 
 #include <string>
-#include "node.h"
+
+struct position
+{
+    int x = 0; // Row
+    int y = 0; // Col
+};
 
 class GameObject {
+protected:
     position pos;
-    std::string name;
-public:
-    virtual position get_position() = 0;
+    std::string name = "";
 
-    virtual void set_position(position) = 0;
+    virtual void set_position(position);
 
-    virtual std::string get_name() = 0;
+    virtual void set_position(int, int);
 
-    virtual void set_name(std::string) = 0;
+    virtual void set_name(std::string);
+
+    virtual position get_position();
+
+    virtual std::string get_name();
 };
 
 #endif

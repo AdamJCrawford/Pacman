@@ -1,14 +1,13 @@
 #include "headers/gameobject.h"
-#include "headers/sprite.h"
-#include "headers/pacman.h"
+#include "headers/edge.h"
 
-Pacman::Pacman(position tmp_pos)
+Edge::Edge(position tmp_pos)
 {
     pos = tmp_pos;
 }
 
 
-Pacman::Pacman(int x, int y)
+Edge::Edge(int x, int y)
 {
     position tmp_pos;
 

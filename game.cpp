@@ -2,10 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "headers/food.h"
 #include "headers/gameobject.h"
-#include "headers/map.h"
+#include "headers/food.h"
+#include "headers/cookie.h"
 #include "headers/node.h"
+#include "headers/globals.h"
+#include "headers/map.h"
 #include "headers/sprite.h"
 
 int main()
@@ -20,10 +22,7 @@ int main()
     // vertical sync is not supported by my device
     //window.setVerticalSyncEnabled (true);
 
-    // another way to create a shape
-    sf::CircleShape shape(100.f);
-
-    shape.setFillColor(sf::Color::Green);
+    Cookie cookie;
 
     // .isOpen() method is from window class; we run a loop as long as the window is open
     while (window.isOpen())
@@ -50,7 +49,8 @@ int main()
             //     // send keyboard event to packman
             // }
             window.clear();
-            window.draw(shape);
+            window.draw(cookie.draw());
+
             window.display();
         }
     }
