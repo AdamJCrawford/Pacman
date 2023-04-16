@@ -2,11 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#include "headers/globals.h"
 #include "headers/gameobject.h"
 #include "headers/food.h"
 #include "headers/cookie.h"
 #include "headers/node.h"
-#include "headers/globals.h"
 #include "headers/map.h"
 #include "headers/sprite.h"
 

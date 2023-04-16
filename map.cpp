@@ -40,7 +40,7 @@ Map::Map()
         "#.##.#..#.......#..#.##.#", // 22
         "#.##.#.####.#.####.#.##.#", // 23
         "#o..........p..........o#", // 24
-        "#########################"  // 35
+        "#########################"  // 25
     };
 }
 
@@ -59,69 +59,69 @@ void Map::create_map()
             case '#':
                {
                    Edge *tmp_edge = new Edge(i, j);
-                   tmp_row.push_back(tmp_node(i, j, tmp_edge));
+                   tmp_row.push_back(Node(i, j, tmp_edge));
                }
                break;
 
             case ' ':
                {
-                   tmp_row.push_back(tmp_node(i, j, nullptr));
+                   tmp_row.push_back(Node(i, j, nullptr));
                }
                break;
 
             case '.':
                {
                    Cookie *tmp_cookie = new Cookie(i, j);
-                   tmp_row.push_back(tmp_node(i, j, tmp_cookie));
+                   tmp_row.push_back(Node(i, j, tmp_cookie));
                }
                break;
 
             case 'o':
                {
                    Pacdot *tmp_pacdot = new Pacdot(i, j);
-                   tmp_row.push_back(tmp_node(i, j, tmp_pacdot));
+                   tmp_row.push_back(Node(i, j, tmp_pacdot));
                }
                break;
 
             case 'p':
                {
                    Pacman *tmp_pacman = new Pacman(i, j);
-                   tmp_row.push_back(tmp_node(i, j, tmp_pacman));
+                   tmp_row.push_back(Node(i, j, tmp_pacman));
                }
                break;
 
             case '1':
                {
                    Ghost *tmp_ghost = new Ghost(i, j, 1);
-                   tmp_row.push_back(tmp_node(i, j, tmp_ghost));
+                   tmp_row.push_back(Node(i, j, tmp_ghost));
                }
                break;
 
             case '2':
                {
                    Ghost *tmp_ghost = new Ghost(i, j, 2);
-                   tmp_row.push_back(tmp_node(i, j, tmp_ghost));
+                   tmp_row.push_back(Node(i, j, tmp_ghost));
                }
                break;
 
             case '3':
                {
                    Ghost *tmp_ghost = new Ghost(i, j, 3);
-                   tmp_row.push_back(tmp_node(i, j, tmp_ghost));
+                   tmp_row.push_back(Node(i, j, tmp_ghost));
                }
                break;
 
             case '4':
                {
                    Ghost *tmp_ghost = new Ghost(i, j, 4);
-                   tmp_row.push_back(tmp_node(i, j, tmp_ghost));
+                   tmp_row.push_back(Node(i, j, tmp_ghost));
                }
                break;
 
             case '-':
                {
                    Edge *tmp_gate = new Edge(i, j);
-                   tmp_row.push_back(tmp_node(i, j, tmp_gate));
+                   tmp_row.push_back(Node(i, j, tmp_gate));
                }
                break;
             }

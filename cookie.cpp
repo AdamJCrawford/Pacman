@@ -13,6 +13,19 @@ Cookie::Cookie()
 }
 
 
+Cookie::Cookie(int x, int y)
+{
+    score_given_when_eaten = 10;
+
+    to_draw.setRadius(10.f);
+    to_draw.setFillColor(sf::Color::White);
+    name  = "Cookie";
+    pos.x = x;
+    pos.y = y;
+    update();
+}
+
+
 Cookie::Cookie(sf::CircleShape tmp_to_draw)
 {
     score_given_when_eaten = 10;
