@@ -1,10 +1,14 @@
 #ifndef EDGE_H
 #define EDGE_H
 
-class Edge: public GameObject {
+class Edge : public GameObject {
 public:
-    Edge(position);
+    Edge();
     Edge(int, int);
+
+    void update();
+
+    sf::CircleShape draw();
 };
 
 #endif

@@ -3,8 +3,13 @@
 
 class Pacman : public Sprite {
 public:
-    Pacman(position);
+
+    Pacman();
     Pacman(int, int);
+
+    void update();
+
+    sf::CircleShape draw();
 };
 
 #endif

@@ -1,6 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
 
+
 class Node {
     position pos;
     GameObject *current_obj;

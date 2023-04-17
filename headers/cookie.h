@@ -1,12 +1,15 @@
 #ifndef COOKIE_H
 #define COOKIE_H
 
-class Cookie : public Food {
-public:
+#include <SFML/Graphics.hpp>
+#include "food.h"
 
+class Cookie : public Food
+{
+public:
+    sf::CircleShape to_draw_tmp;
     Cookie();
     Cookie(int, int);
-    Cookie(sf::CircleShape tmp_to_draw);
 
     void update();
 

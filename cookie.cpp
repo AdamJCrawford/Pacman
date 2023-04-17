@@ -1,46 +1,38 @@
-#include "headers/food.h"
+#include <SFML/Graphics.hpp>
+#include <string>
+#include <iostream>
 #include "headers/cookie.h"
 
 
 
 Cookie::Cookie()
 {
+    std::cout << name << "\n";
     score_given_when_eaten = 10;
 
-    to_draw.setRadius(10.f);
-    to_draw.setFillColor(sf::Color::White);
+    to_draw_tmp.setRadius(10.f);
+    to_draw_tmp.setFillColor(sf::Color::White);
     name = "Cookie";
+    std::cout << name << "\n";
 }
 
 
 Cookie::Cookie(int x, int y)
 {
-    score_given_when_eaten = 10;
-
-    to_draw.setRadius(10.f);
-    to_draw.setFillColor(sf::Color::White);
-    name  = "Cookie";
+    Cookie();
     pos.x = x;
     pos.y = y;
     update();
 }
 
 
-Cookie::Cookie(sf::CircleShape tmp_to_draw)
-{
-    score_given_when_eaten = 10;
-    to_draw = tmp_to_draw;
-    name    = "Cookie";
-}
-
-
 void Cookie::update()
 {
-    to_draw.setPosition(pos.x, pos.y);
+    to_draw_tmp.setPosition(pos.x, pos.y);
 }
 
 
 sf::CircleShape Cookie::draw()
 {
-    return to_draw;
+    return to_draw_tmp;
 }

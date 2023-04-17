@@ -1,13 +1,11 @@
 #include "headers/food.h"
 #include "headers/pacdot.h"
 
-
-
 Pacdot::Pacdot()
 {
-    score_given_when_eaten = 50;
+    score_given_when_eaten = 10;
 
-    to_draw.setRadius(20.f);
+    to_draw.setRadius(10.f);
     to_draw.setFillColor(sf::Color::White);
     name = "Pacdot";
 }
@@ -15,22 +13,10 @@ Pacdot::Pacdot()
 
 Pacdot::Pacdot(int x, int y)
 {
-    score_given_when_eaten = 50;
-
-    to_draw.setRadius(20.f);
-    to_draw.setFillColor(sf::Color::White);
-    name  = "Pacdot";
+    Pacdot();
     pos.x = x;
     pos.y = y;
     update();
-}
-
-
-Pacdot::Pacdot(sf::CircleShape tmp_to_draw)
-{
-    score_given_when_eaten = 50;
-    to_draw = tmp_to_draw;
-    name    = "Pacdot";
 }
 
 

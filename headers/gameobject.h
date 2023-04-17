@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include <string>
+#include <SFML/Graphics.hpp>
 
 struct position
 {
@@ -10,9 +11,10 @@ struct position
 };
 
 class GameObject {
-protected:
+public:
     position pos;
-    std::string name = "";
+    std::string name;
+    sf::CircleShape to_draw;
 
     virtual void set_position(position);
 

@@ -1,28 +1,28 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include <vector>
+#include <SFML/Graphics.hpp>
 
 #include "headers/globals.h"
-#include "headers/gameobject.h"
-#include "headers/food.h"
 #include "headers/cookie.h"
-#include "headers/node.h"
+#include "headers/pacdot.h"
 #include "headers/map.h"
-#include "headers/sprite.h"
 
 int main()
 {
     // creates a window object using the Window constructor
     // parameters: videomode and title of the window
     // VideoMode is simply a type that defines the dimensions of the window (and bits per pixel)
-    sf::RenderWindow window(sf::VideoMode(400, 300), "Pacman");
+    sf::RenderWindow window(sf::VideoMode(600, 600), "Pacman");
 
-    window.create(sf::VideoMode::getFullscreenModes()[0], "SFML window", sf::Style::Fullscreen);
+    // window.create(sf::VideoMode::getFullscreenModes()[0], "SFML window", sf::Style::Fullscreen);
 
     // vertical sync is not supported by my device
     //window.setVerticalSyncEnabled (true);
 
-    Cookie cookie;
+    Cookie cookie(50, 50);
+
+    std::cout << cookie.pos.x << ' ' << cookie.pos.y << ' ' << cookie.get_name() << "\n";
+    // Pacdot pacdot(20, 20);
 
     // .isOpen() method is from window class; we run a loop as long as the window is open
     while (window.isOpen())
@@ -50,6 +50,7 @@ int main()
             // }
             window.clear();
             window.draw(cookie.draw());
+            // window.draw(pacdot.draw());
 
             window.display();
         }
