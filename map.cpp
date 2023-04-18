@@ -48,12 +48,12 @@ Map::Map()
 void Map::create_map()
 {
 
-    for (int i = 0; i < 24; i++)
+    for (int j = 0; j < 24; j++)
     {
         std::vector<Node> tmp_row;
-        for (int j = 0; j < 25; j++)
+        for (int i = 0; i < 25; i++)
         {
-            switch (string_map[i][j])
+            switch (string_map[j][i])
             {
             case '#':
                {

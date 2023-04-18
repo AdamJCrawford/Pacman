@@ -44,14 +44,12 @@ int main()
             // }
 
             window.clear();
-            for(int i = 0; i < 25; i++)
+            for(int j = 0; j < 25; j++)
             {
-                for(int j = 0; j < 24; j++)
+                for(int i = 0; i < 24; i++)
                 {
-                    std::cout << map.map[i][j].get_pos().x << ' ' << map.map[i][j].get_pos().y << "\n";
                     if(map.map[i][j].get_current_obj())
                     {
-                        std::cout << map.map[i][j].get_current_obj()->name << "\n";
                         window.draw(map.map[i][j].get_current_obj()->draw());
                     }
                     
@@ -70,4 +68,4 @@ int main()
     window.close();
     return 0;
 }
-  
+   

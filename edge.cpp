@@ -20,7 +20,7 @@ Edge::Edge(int x, int y)
 
 void Edge::update()
 {
-    to_draw.setPosition(pos.x, pos.y);
+    to_draw.setPosition(20 * pos.x, 20 * pos.y);
 }
 
 

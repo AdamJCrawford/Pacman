@@ -45,7 +45,7 @@ Ghost::Ghost(int x, int y, int tmp_ghost_num)
 
 void Ghost::update()
 {
-    to_draw.setPosition(pos.x, pos.y);
+    to_draw.setPosition(20 * pos.x, 20 * pos.y);
 }
 
 
