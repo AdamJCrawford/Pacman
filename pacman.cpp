@@ -15,6 +15,32 @@ Pacman::Pacman(int x, int y)
     update();
 }
 
+void Pacman::move()
+{
+    switch(curr_key)
+    {
+        case 1:
+            {
+                pos.y++;
+                break;}
+        case 2:
+            {
+                pos.x--;
+                break;
+            }
+        case 3:
+            {
+                pos.y--;
+                break;
+            }
+        case 4:
+            {
+                pos.x++;
+                break;
+            }
+    }
+    update();
+}
 
 void Pacman::update()
 {
@@ -26,3 +52,4 @@ sf::CircleShape Pacman::draw()
 {
     return to_draw;
 }
+  

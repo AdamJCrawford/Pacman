@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 // #include <vector>
 #include <SFML/Graphics.hpp>
 
@@ -6,13 +7,15 @@
 #include "headers/cookie.h"
 #include "headers/pacdot.h"
 #include "headers/map.h"
+#include "headers/pacman.h"
+#include "headers/ghost.h"
 
 int main()
 {
     // creates a window object using the Window constructor
     // parameters: videomode and title of the window
     // VideoMode is simply a type that defines the dimensions of the window (and bits per pixel)
-    sf::RenderWindow window(sf::VideoMode(600, 600), "Pacman");
+    sf::RenderWindow window(sf::VideoMode(500, 480), "Pacman");
 
     // window.create(sf::VideoMode::getFullscreenModes()[0], "SFML window", sf::Style::Fullscreen);
 
@@ -43,18 +46,53 @@ int main()
             //     window.close();
             // }
 
+            // Pacman moves up
+            else if ((event.type == sf::Event::KeyPressed) && ((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::W)))
+            {
+                curr_key = 1;
+            }
+
+            // Pacman moves left
+            else if ((event.type == sf::Event::KeyPressed) && ((event.key.code == sf::Keyboard::Left) || (event.key.code == sf::Keyboard::A)))
+            {
+                curr_key = 2;
+            }
+
+            // Pacman moves down
+            else if ((event.type == sf::Event::KeyPressed) && ((event.key.code == sf::Keyboard::Down) || (event.key.code == sf::Keyboard::S)))
+            {
+                curr_key = 3;
+            }
+
+            // Pacman moves right
+            else if ((event.type == sf::Event::KeyPressed) && ((event.key.code == sf::Keyboard::Right) || (event.key.code == sf::Keyboard::D)))
+            {
+                curr_key = 4;
+            }
+
             window.clear();
+            // j is the y value of the position
             for(int j = 0; j < 25; j++)
             {
+                // i is the x value of the position
                 for(int i = 0; i < 24; i++)
                 {
                     if(map.map[i][j].get_current_obj())
                     {
+                        if (map.map[i][j].get_current_obj()->name == "Pacman")
+                        {
+                            (static_cast<Pacman*>(map.map[i][j].get_current_obj()))->move();
+                        }
+                        else if (map.map[i][j].get_current_obj()->name == "Ghost")
+                        {
+                            (static_cast<Ghost*>(map.map[i][j].get_current_obj()))->move();
+                        }
+
                         window.draw(map.map[i][j].get_current_obj()->draw());
                     }
+                }
                     
                                     
-                }
             }
             
             // window.draw(cookie.draw());
@@ -68,4 +106,4 @@ int main()
     window.close();
     return 0;
 }
-   
+    

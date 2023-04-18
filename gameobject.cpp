@@ -39,4 +39,4 @@ void GameObject::set_name(std::string tmp_name)
 sf::CircleShape GameObject::draw()
 {
     return sf::CircleShape();
-}   
+}    
