@@ -12,7 +12,7 @@
 #include "headers/sprite.h"
 #include "headers/ghost.h"
 #include "headers/pacman.h"
- 
+
 Map::Map()
 {
     string_map = {
@@ -47,7 +47,6 @@ Map::Map()
 
 void Map::create_map()
 {
-
     for (int j = 0; j < 24; j++)
     {
         std::vector<Node> tmp_row;
@@ -123,14 +122,35 @@ void Map::create_map()
                    tmp_row.push_back(Node(i, j, tmp_gate));
                }
                break;
+
             default:
-                {
-                    std::cout << "default reached" << std::endl;
-                    break;
-                }
+               {
+                   std::cout << "default reached" << std::endl;
+                   break;
+               }
             }
-            
         }
         map.push_back(tmp_row);
+    }
+}
+
+
+void update_object(int initital_x, int initital_y, int x, int y)
+{
+    std::cout << "Got here\n";
+    GameObject *go_init        = map[initital_y][initital_x].get_current_obj();
+    GameObject *go_destination = map[y][x].get_current_obj();
+
+    if (go_destination->name == "Edge")
+    {
+        return;
+    }
+
+    if (go_init->name == "Pacman")
+    {
+        if (go_destination->name == "Ghost")
+        {
+            std::cout << "Game over\n";
+        }
     }
 }

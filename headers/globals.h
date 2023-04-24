@@ -8,6 +8,6 @@ inline int map_length, map_width = 25;
 inline bool scatter_mode = 0;
 inline int  score        = 0;
 
-inline int curr_key = 1;
+inline int curr_key = 0;
 
 #endif

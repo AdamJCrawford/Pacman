@@ -10,7 +10,9 @@ public:
 
     void update();
 
-    void move();
+    void update(Map *, int x, int y);
+
+    void move(Map *);
 
     sf::CircleShape draw();
 };

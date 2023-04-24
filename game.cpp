@@ -17,12 +17,15 @@ int main()
     // VideoMode is simply a type that defines the dimensions of the window (and bits per pixel)
     sf::RenderWindow window(sf::VideoMode(500, 480), "Pacman");
 
+    window.setFramerateLimit(5);
+
     // window.create(sf::VideoMode::getFullscreenModes()[0], "SFML window", sf::Style::Fullscreen);
 
     // vertical sync is not supported by my device
     //window.setVerticalSyncEnabled (true);
 
     Map map;
+
     map.create_map();
     // Pacdot pacdot(20, 20);
 
@@ -72,29 +75,27 @@ int main()
 
             window.clear();
             // j is the y value of the position
-            for(int j = 0; j < 25; j++)
+            for (int j = 0; j < 25; j++)
             {
                 // i is the x value of the position
-                for(int i = 0; i < 24; i++)
+                for (int i = 0; i < 24; i++)
                 {
-                    if(map.map[i][j].get_current_obj())
+                    if (map.map[i][j].get_current_obj())
                     {
                         if (map.map[i][j].get_current_obj()->name == "Pacman")
                         {
-                            (static_cast<Pacman*>(map.map[i][j].get_current_obj()))->move();
+                            (static_cast<Pacman *>(map.map[i][j].get_current_obj()))->move(&map);
                         }
-                        else if (map.map[i][j].get_current_obj()->name == "Ghost")
+                        if (map.map[i][j].get_current_obj()->name == "Ghost")
                         {
-                            (static_cast<Ghost*>(map.map[i][j].get_current_obj()))->move();
+                            (static_cast<Ghost *>(map.map[i][j].get_current_obj()))->move();
                         }
 
                         window.draw(map.map[i][j].get_current_obj()->draw());
                     }
                 }
-                    
-                                    
             }
-            
+
             // window.draw(cookie.draw());
             // window.draw(pacdot.draw());
 
@@ -106,4 +107,3 @@ int main()
     window.close();
     return 0;
 }
-    
