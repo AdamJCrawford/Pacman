@@ -2,6 +2,7 @@
 #define PACMAN_H
 #include "globals.h"
 #include "sprite.h"
+#include "map.h"
 
 class Pacman : public Sprite {
 public:

@@ -17,7 +17,7 @@ int main()
     // VideoMode is simply a type that defines the dimensions of the window (and bits per pixel)
     sf::RenderWindow window(sf::VideoMode(500, 480), "Pacman");
 
-    window.setFramerateLimit(5);
+    window.setFramerateLimit(30);
 
     // window.create(sf::VideoMode::getFullscreenModes()[0], "SFML window", sf::Style::Fullscreen);
 
@@ -50,25 +50,25 @@ int main()
             // }
 
             // Pacman moves up
-            else if ((event.type == sf::Event::KeyPressed) && ((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::W)))
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
                 curr_key = 1;
             }
 
-            // Pacman moves left
-            else if ((event.type == sf::Event::KeyPressed) && ((event.key.code == sf::Keyboard::Left) || (event.key.code == sf::Keyboard::A)))
+            // Pacman moves leftevent.key.code == sf::Keyboard::A)
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 curr_key = 2;
             }
 
             // Pacman moves down
-            else if ((event.type == sf::Event::KeyPressed) && ((event.key.code == sf::Keyboard::Down) || (event.key.code == sf::Keyboard::S)))
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
                 curr_key = 3;
             }
 
             // Pacman moves right
-            else if ((event.type == sf::Event::KeyPressed) && ((event.key.code == sf::Keyboard::Right) || (event.key.code == sf::Keyboard::D)))
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
                 curr_key = 4;
             }
@@ -80,19 +80,22 @@ int main()
                 // i is the x value of the position
                 for (int i = 0; i < 24; i++)
                 {
-                    if (map.map[i][j].get_current_obj())
+                    for(auto obj: map.map[i][j].get_current_objs())
                     {
-                        if (map.map[i][j].get_current_obj()->name == "Pacman")
+                        if (obj)
                         {
-                            (static_cast<Pacman *>(map.map[i][j].get_current_obj()))->move(&map);
-                        }
-                        if (map.map[i][j].get_current_obj()->name == "Ghost")
-                        {
-                            (static_cast<Ghost *>(map.map[i][j].get_current_obj()))->move();
-                        }
+                            if (obj->name == "Pacman")
+                            {
+                                (static_cast<Pacman *>(obj))->move(&map);
+                            }
+                            if (obj->name == "Ghost")
+                            {
+                                (static_cast<Ghost *>(obj))->move();
+                            }
 
-                        window.draw(map.map[i][j].get_current_obj()->draw());
-                    }
+                            window.draw(obj->draw());
+                        }
+                    }      
                 }
             }
 
