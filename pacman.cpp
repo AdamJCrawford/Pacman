@@ -64,7 +64,7 @@ void Pacman::update()
 void Pacman::update(Map *map, int tempx, int tempy)
 {
     // map.f(tempy, tempx, pos.x, pos.y);
-    std::cout << curr_key << "\n";
+    std::cout << pos.y << ' ' << pos.x << "\n";
     for(auto obj:map->map[pos.y][pos.x].get_current_objs())
     {
         if (obj)
@@ -83,13 +83,14 @@ void Pacman::update(Map *map, int tempx, int tempy)
                 score+= 10;
                 map->map[pos.y][pos.x].add_object(this);
                 // Need to delete cookie
-                //map->map[tempy][tempx].del_object(this);
+                map->map[pos.y][pos.x].del_object(obj);
                 map->map[tempy][tempx].del_object(this);
             }
             else if(obj->name == "Pacdot")
             {
                 score+= 50;
                 map->map[pos.y][pos.x].add_object(this);
+                map->map[pos.y][pos.x].del_object(obj);
                 map->map[tempy][tempx].del_object(this);
             }
         }   
@@ -102,4 +103,4 @@ sf::CircleShape Pacman::draw()
 {
     return to_draw;
 }
-   
+    

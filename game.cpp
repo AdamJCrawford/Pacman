@@ -17,7 +17,7 @@ int main()
     // VideoMode is simply a type that defines the dimensions of the window (and bits per pixel)
     sf::RenderWindow window(sf::VideoMode(500, 480), "Pacman");
 
-    window.setFramerateLimit(30);
+    window.setFramerateLimit(1);
 
     // window.create(sf::VideoMode::getFullscreenModes()[0], "SFML window", sf::Style::Fullscreen);
 
@@ -72,8 +72,9 @@ int main()
             {
                 curr_key = 4;
             }
+        }
 
-            window.clear();
+        window.clear();
             // j is the y value of the position
             for (int j = 0; j < 25; j++)
             {
@@ -103,10 +104,10 @@ int main()
             // window.draw(pacdot.draw());
 
             window.display();
-        }
     }
     // window.display();
 
     window.close();
     return 0;
 }
+ 
