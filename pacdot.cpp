@@ -9,7 +9,7 @@ Pacdot::Pacdot(int x, int y)
 
     to_draw.setRadius(10.f);
     to_draw.setFillColor(sf::Color::White);
-    name = "Pacdot";
+    name  = "Pacdot";
     pos.x = x;
     pos.y = y;
     update();

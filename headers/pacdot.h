@@ -1,7 +1,7 @@
 #ifndef PACDOT_H
 #define PACDOT_H
 
-class Pacdot: public Food
+class Pacdot : public Food
 {
 public:
 

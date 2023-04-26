@@ -7,7 +7,7 @@ Edge::Edge(int x, int y)
 {
     to_draw.setRadius(10.f);
     to_draw.setFillColor(sf::Color::Blue);
-    
+
     name = "Edge";
     position tmp_pos;
 
@@ -28,4 +28,3 @@ sf::CircleShape Edge::draw()
 {
     return to_draw;
 }
- 

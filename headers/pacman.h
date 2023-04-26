@@ -7,6 +7,8 @@
 class Pacman : public Sprite {
 public:
 
+    bool has_moved = 0;
+
     Pacman(int, int);
 
     void update();
@@ -16,6 +18,8 @@ public:
     void move(Map *);
 
     sf::CircleShape draw();
+
+    void reset();
 };
 
 #endif

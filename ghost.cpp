@@ -44,35 +44,41 @@ Ghost::Ghost(int x, int y, int tmp_ghost_num)
     update();
 }
 
+
 void Ghost::move()
 {
     int random = (rand() % 4);
-    switch(random)
+
+    switch (random)
     {
-        case 1:
-            {
-                pos.y++;
-                break;
-            }
-        case 2:
-            {
-                pos.x--;
-                break;
-            }
-        case 3:
-            {
-                pos.y--;
-                break;
-            }
-        case 4:
-            {
-                pos.x++;
-                break;
-            }
+    case 1:
+       {
+           pos.y++;
+           break;
+       }
+
+    case 2:
+       {
+           pos.x--;
+           break;
+       }
+
+    case 3:
+       {
+           pos.y--;
+           break;
+       }
+
+    case 4:
+       {
+           pos.x++;
+           break;
+       }
     }
-    
+
     update();
 }
+
 
 void Ghost::update()
 {
@@ -84,4 +90,9 @@ sf::CircleShape Ghost::draw()
 {
     return to_draw;
 }
- 
+
+
+void Ghost::reset()
+{
+    has_moved = 0;
+}

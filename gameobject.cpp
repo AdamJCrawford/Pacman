@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "headers/gameobject.h"
 
- 
+
 position GameObject::get_position()
 {
     return pos;
@@ -36,7 +36,8 @@ void GameObject::set_name(std::string tmp_name)
     name = tmp_name;
 }
 
+
 sf::CircleShape GameObject::draw()
 {
     return sf::CircleShape();
-}    
+}

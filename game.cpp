@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-// #include <vector>
+#include <vector>
 #include <SFML/Graphics.hpp>
 
 #include "headers/globals.h"
@@ -75,39 +75,62 @@ int main()
         }
 
         window.clear();
-            // j is the y value of the position
-            for (int j = 0; j < 25; j++)
-            {
-                // i is the x value of the position
-                for (int i = 0; i < 24; i++)
-                {
-                    for(auto obj: map.map[i][j].get_current_objs())
-                    {
-                        if (obj)
-                        {
-                            if (obj->name == "Pacman")
-                            {
-                                (static_cast<Pacman *>(obj))->move(&map);
-                            }
-                            if (obj->name == "Ghost")
-                            {
-                                (static_cast<Ghost *>(obj))->move();
-                            }
+        // j is the y value of the position
+        // things can move more than once
 
-                            window.draw(obj->draw());
+        bool characters_added = 0;
+        std::vector<GameObject *> characters;
+
+        for (int j = 0; j < 25; j++)
+        {
+            // i is the x value of the position
+            for (int i = 0; i < 24; i++)
+            {
+                for (auto obj: map.map[i][j].get_current_objs())
+                {
+                    if (obj)
+                    {
+                        if (obj->name == "Pacman")
+                        {
+                            (static_cast<Pacman *>(obj))->move(&map);
+                            if (!characters_added)
+                            {
+                                characters.push_back(obj);
+                            }
                         }
-                    }      
+                        if (obj->name == "Ghost")
+                        {
+                            (static_cast<Ghost *>(obj))->move();
+                            if (!characters_added)
+                            {
+                                characters.push_back(obj);
+                            }
+                        }
+
+                        window.draw(obj->draw());
+                    }
                 }
             }
+        }
+        characters_added = 1;
+        for (auto character: characters)
+        {
+            if (character->name == "Ghost")
+            {
+                (static_cast<Ghost *>(character))->reset();
+            }
+            else
+            {
+                (static_cast<Pacman *>(character))->reset();
+            }
+        }
+        // window.draw(cookie.draw());
+        // window.draw(pacdot.draw());
 
-            // window.draw(cookie.draw());
-            // window.draw(pacdot.draw());
-
-            window.display();
+        window.display();
     }
     // window.display();
 
     window.close();
     return 0;
 }
- 
