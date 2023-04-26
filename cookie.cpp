@@ -9,7 +9,7 @@ Cookie::Cookie(int x, int y)
     name = "Cookie";
     score_given_when_eaten = 10;
 
-    to_draw.setRadius(10.f);
+    to_draw.setRadius(5.f);
     to_draw.setFillColor(sf::Color::White);
 
     pos.x = x;
@@ -20,7 +20,7 @@ Cookie::Cookie(int x, int y)
 
 void Cookie::update()
 {
-    to_draw.setPosition(20 * pos.x, 20 * pos.y);
+    to_draw.setPosition(20 * pos.x + 5, 20 * pos.y + 5);
 }
 
 
