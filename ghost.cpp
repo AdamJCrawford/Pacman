@@ -77,6 +77,17 @@ void Ghost::move(Map *map)
            break;
        }
     }
+    
+    if(pos.x == -1 && pos.y == 12)
+    {
+        pos.x = 24;
+    }
+
+    else if(pos.x == 25 && pos.y == 12)
+    {
+        pos.x = 0;
+    }
+    
     has_moved = 1;
     update(map, tempx, tempy);
 }
