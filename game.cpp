@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <sstream>
 
 #include "headers/globals.h"
 #include "headers/cookie.h"
@@ -15,9 +16,9 @@ int main()
     // creates a window object using the Window constructor
     // parameters: videomode and title of the window
     // VideoMode is simply a type that defines the dimensions of the window (and bits per pixel)
-    sf::RenderWindow window(sf::VideoMode(500, 480), "Pacman");
+    sf::RenderWindow window(sf::VideoMode(500, 500), "Pacman");
 
-    window.setFramerateLimit(1);
+    window.setFramerateLimit(5);
 
     // window.create(sf::VideoMode::getFullscreenModes()[0], "SFML window", sf::Style::Fullscreen);
 
@@ -84,7 +85,7 @@ int main()
         for (int j = 0; j < 25; j++)
         {
             // i is the x value of the position
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < 25; i++)
             {
                 for (auto obj: map.map[i][j].get_current_objs())
                 {
@@ -126,6 +127,8 @@ int main()
         }
         // window.draw(cookie.draw());
         // window.draw(pacdot.draw());
+
+        window.setTitle(std::to_string(score));
 
         window.display();
     }

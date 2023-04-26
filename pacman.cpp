@@ -24,6 +24,8 @@ void Pacman::move(Map *map)
     int tempx = pos.x;
     int tempy = pos.y;
 
+    
+
     if (has_moved)
     {
         return;

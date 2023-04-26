@@ -25,13 +25,13 @@ Map::Map()
         "#.#.....#.#.#.#.#.......#", // 6
         "#.#.##.##.#.#.#.###.###.#", // 7
         "#......##   #   ###.#...#", // 8
-        "#.####..  #####  ...#.#.#", // 8
+        "#.####..  #####  ...#.#.#", // 9
         "#.......#   1   ###.....#", // 10
         "###.###.# #   # #...#.###", // 11
         " .......# #234# #.#..... ", // 12
         "###.#.#.# ##### #.#.#.###", // 13
         "#...#.#.#       #.#.#...#", // 14
-        "#.###.#.# ##### #.#.###.#"  // 15
+        "#.###.#.# ##### #.#.###.#", // 15
         "#.....#.    #    .#.....#", // 16
         "#.###.#.#.#.#.#.#.#.###.#", // 17
         "#.......#.#.#.#.#.......#", // 18
@@ -41,13 +41,14 @@ Map::Map()
         "#.##.#.####.#.####.#.##.#", // 22
         "#o..........p..........o#", // 23
         "#########################"  // 24
+        
     };
 }
 
 
 void Map::create_map()
 {
-    for (int j = 0; j < 24; j++)
+    for (int j = 0; j < 25; j++)
     {
         std::vector<Node> tmp_row;
         for (int i = 0; i < 25; i++)
@@ -133,24 +134,3 @@ void Map::create_map()
         map.push_back(tmp_row);
     }
 }
-
-
-// void Map::update_object(int initital_x, int initital_y, int x, int y)
-// {
-//     std::cout << "Got here\n";
-//     GameObject *go_init        = map[initital_y][initital_x].get_current_obj();
-//     GameObject *go_destination = map[y][x].get_current_obj();
-
-//     if (go_destination->name == "Edge")
-//     {
-//         return;
-//     }
-
-//     if (go_init->name == "Pacman")
-//     {
-//         if (go_destination->name == "Ghost")
-//         {
-//             std::cout << "Game over\n";
-//         }
-//     }
-// }
