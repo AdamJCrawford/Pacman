@@ -100,8 +100,8 @@ void Pacman::update(Map *map, int tempx, int tempy)
                 map->map[tempy][tempx].del_object(this);
             }
         }
-        update();
     }
+    update();
 }
 
 

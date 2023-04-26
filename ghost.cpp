@@ -45,8 +45,10 @@ Ghost::Ghost(int x, int y, int tmp_ghost_num)
 }
 
 
-void Ghost::move()
+void Ghost::move(Map *map)
 {
+    int tempx  = pos.x;
+    int tempy  = pos.y;
     int random = (rand() % 4);
 
     switch (random)
@@ -75,14 +77,35 @@ void Ghost::move()
            break;
        }
     }
-
-    update();
+    has_moved = 1;
+    update(map, tempx, tempy);
 }
 
 
 void Ghost::update()
 {
     to_draw.setPosition(20 * pos.x, 20 * pos.y);
+}
+
+
+void Ghost::update(Map *map, int tempx, int tempy)
+{
+    for (auto obj:map->map[pos.y][pos.x].get_current_objs())
+    {
+        if (obj)
+        {
+            if (obj->name == "Edge")
+            {
+                pos.x = tempx;
+                pos.y = tempy;
+            }
+            else if (obj->name == "Pacman")
+            {
+                std::exit(0);
+            }
+        }
+    }
+    update();
 }
 
 

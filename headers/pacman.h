@@ -13,7 +13,7 @@ public:
 
     void update();
 
-    void update(Map *, int x, int y);
+    void update(Map *, int, int);
 
     void move(Map *);
 

@@ -100,7 +100,7 @@ int main()
                         }
                         if (obj->name == "Ghost")
                         {
-                            (static_cast<Ghost *>(obj))->move();
+                            (static_cast<Ghost *>(obj))->move(&map);
                             if (!characters_added)
                             {
                                 characters.push_back(obj);

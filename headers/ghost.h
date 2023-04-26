@@ -2,6 +2,7 @@
 #define GHOSTS_H
 
 #include "sprite.h"
+#include "map.h"
 
 class Ghost : public Sprite {
     int ghost_num;
@@ -11,7 +12,9 @@ public:
 
     void update();
 
-    void move();
+    void update(Map *, int, int);
+
+    void move(Map *);
 
     sf::CircleShape draw();
 
