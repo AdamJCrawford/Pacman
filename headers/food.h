@@ -9,6 +9,7 @@
 class Food : public GameObject {
 public:
     int score_given_when_eaten = 0;
+    int get_score_when_eaten();
 };
 
 #endif

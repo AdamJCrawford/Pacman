@@ -2,6 +2,7 @@
 #include "headers/sprite.h"
 #include "headers/map.h"
 #include "headers/pacman.h"
+#include "headers/food.h"
 #include <iostream>
 
 Pacman::Pacman(int x, int y)
@@ -84,14 +85,9 @@ void Pacman::update(Map *map, int tempx, int tempy)
             {
                 std::exit(0);
             }
-            else if (obj->name == "Cookie")
+            else if ((obj->name == "Cookie") || (obj->name == "Pacdot"))
             {
-                score += 10;
-                map->map[pos.y][pos.x].del_object(obj);
-            }
-            else if (obj->name == "Pacdot")
-            {
-                score += 50;
+                score += (static_cast<Food *>(obj))->get_score_when_eaten();
                 map->map[pos.y][pos.x].del_object(obj);
             }
         }

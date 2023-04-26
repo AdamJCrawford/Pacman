@@ -5,7 +5,7 @@
 
 Pacdot::Pacdot(int x, int y)
 {
-    score_given_when_eaten = 10;
+    score_given_when_eaten = 50;
 
     to_draw.setRadius(10.f);
     to_draw.setFillColor(sf::Color::White);
