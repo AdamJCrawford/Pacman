@@ -80,7 +80,6 @@ int main()
         // things can move more than once
 
         bool characters_added = 0;
-        std::vector<GameObject *> characters;
 
         for (int j = 0; j < 25; j++)
         {

@@ -3,6 +3,7 @@
 #include "headers/map.h"
 #include "headers/pacman.h"
 #include "headers/food.h"
+#include "headers/ghost.h"
 #include <iostream>
 
 Pacman::Pacman(int x, int y)
@@ -24,7 +25,7 @@ void Pacman::move(Map *map)
     int tempx = pos.x;
     int tempy = pos.y;
 
-    
+
 
     if (has_moved)
     {
@@ -60,6 +61,17 @@ void Pacman::move(Map *map)
     default:
         break;
     }
+
+    if(pos.x == -1 && pos.y == 12)
+    {
+        pos.x = 24;
+    }
+
+    else if(pos.x == 25 && pos.y == 12)
+    {
+        pos.x = 0;
+    }
+
     has_moved = 1;
     update(map, tempx, tempy);
 }
@@ -85,10 +97,29 @@ void Pacman::update(Map *map, int tempx, int tempy)
             }
             else if (obj->name == "Ghost")
             {
-                std::exit(0);
+                if(static_cast<Ghost *>(obj)->blue_status())
+                {
+                    score += (static_cast<Ghost *>(obj))->get_score_when_eaten();
+                    map->map[12][12].add_object(obj);
+                    map->map[pos.y][pos.x].del_object(obj);
+                }
+                else
+                {
+                    std::exit(0);
+                }
             }
             else if ((obj->name == "Cookie") || (obj->name == "Pacdot"))
             {
+                if (obj->name == "Pacdot")
+                {
+                    for (auto character: characters)
+                    {
+                        if (character->name == "Ghost")
+                        {
+                            static_cast<Ghost *>(character)->blue_mode();
+                        }
+                    }   
+                }
                 score += (static_cast<Food *>(obj))->get_score_when_eaten();
                 map->map[pos.y][pos.x].del_object(obj);
             }
