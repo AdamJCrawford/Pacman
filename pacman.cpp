@@ -61,7 +61,11 @@ void Pacman::move(Map *map)
     default:
         break;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> faa90e7f3dd681f7bc4ba2525e2117867a5b55ba
     if(pos.x == -1 && pos.y == 12)
     {
         pos.x = 24;
@@ -71,7 +75,10 @@ void Pacman::move(Map *map)
     {
         pos.x = 0;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> faa90e7f3dd681f7bc4ba2525e2117867a5b55ba
     has_moved = 1;
     update(map, tempx, tempy);
 }

@@ -64,14 +64,10 @@ void Ghost::move(Map *map)
         pos.x = 0;
     }
 
-    has_moved = 1;
-    update(map, tempx, tempy);
-}
 
-
-void Ghost::update()
-{
-    to_draw.setPosition(20 * pos.x, 20 * pos.y);
+    
+>>>>>>> faa90e7f3dd681f7bc4ba2525e2117867a5b55ba
+x, 20 * pos.y);
 }
 
 
