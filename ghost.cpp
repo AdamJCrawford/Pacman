@@ -105,6 +105,8 @@ void Ghost::update(Map *map, int tempx, int tempy)
             }
         }
     }
+    map->map[tempy][tempx].del_object(this);
+    map->map[pos.y][pos.x].add_object(this);
     update();
 }
 

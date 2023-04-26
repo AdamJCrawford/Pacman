@@ -87,20 +87,17 @@ void Pacman::update(Map *map, int tempx, int tempy)
             else if (obj->name == "Cookie")
             {
                 score += 10;
-                map->map[pos.y][pos.x].add_object(this);
-                // Need to delete cookie
                 map->map[pos.y][pos.x].del_object(obj);
-                map->map[tempy][tempx].del_object(this);
             }
             else if (obj->name == "Pacdot")
             {
                 score += 50;
-                map->map[pos.y][pos.x].add_object(this);
                 map->map[pos.y][pos.x].del_object(obj);
-                map->map[tempy][tempx].del_object(this);
             }
         }
     }
+    map->map[tempy][tempx].del_object(this);
+    map->map[pos.y][pos.x].add_object(this);
     update();
 }
 
