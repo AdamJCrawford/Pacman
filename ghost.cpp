@@ -20,39 +20,132 @@ Ghost::Ghost(int x, int y, int tmp_ghost_num)
 }
 
 
+// vector<position> Ghost::DFS()
+// {
+
+
+
+    // int starting_pos_x = pos.x;
+    // int starting_pos_y = pos.y;
+
+
+
+    // vector<Node*> current_path;
+
+    // while front.size()
+    // {
+    //     current = front.pop_back();
+    //     if(current-> name == "Pacman")
+    //     {
+    //         return current_path;
+    //     }
+    //     else
+    //     {
+    //         // need to check that these are valid locations
+    //         front.push_back(map.map[current.pos.y][current.pos.x + 1]);
+    //         front.push_back(map.map[current.pos.y - 1][current.pos.x]);
+    //         front.push_back(map.map[current.pos.y][current.pos.x - 1]);
+    //         front.push_back(map.map[current.pos.y + 1][current.pos.x]);
+    //     }
+    // }
+
+// }
+
+/*
+def BFS(problem, repeat_check=False):
+    current_node = Node(problem.start)
+    front = Frontier(current_node)
+    if repeat_check:
+        reached = {}
+    while not front.is_empty():
+        current_node = front.pop()
+        if problem.is_goal(current_node.loc):
+            return current_node
+        if repeat_check:
+            if current_node in reached:
+                continue
+            reached[current_node] = 1
+        front.add(current_node.expand(problem))
+    return None
+*/
+
 void Ghost::move(Map *map)
 {
     int tempx  = pos.x;
     int tempy  = pos.y;
 
-    int random = (rand() % 4);
 
-    switch (random)
+    GameObject* pacman;
+    for(auto character: characters)
     {
-    case 1:
-       {
-           pos.y++;
-           break;
-       }
-
-    case 2:
-       {
-           pos.x--;
-           break;
-       }
-
-    case 3:
-       {
-           pos.y--;
-           break;
-       }
-
-    case 4:
-       {
-           pos.x++;
-           break;
-       }
+        if (character-> name == "Pacman")
+        {
+            pacman = character;
+        }
     }
+
+    int goal_pos_x = pacman->pos.x;
+    int goal_pos_y = pacman->pos.y;
+    
+    if(pos.x > goal_pos_x)
+    {
+        if(pos.x != 0 && !map->is_edge(map, pos.y, pos.x - 1))
+        {
+            pos.x--;
+        }
+    }
+    else if(pos.x < goal_pos_y)
+    {
+        if(pos.x < map_width - 1 && !map->is_edge(map, pos.y, pos.x + 1))
+        {
+            pos.x++;
+        }
+    }
+
+    if(pos.y > goal_pos_y && pos.y != 0)
+    {
+        if(!map->is_edge(map, pos.y - 1, pos.x))
+        {
+            pos.y--;
+        }
+    }
+    else if(pos.y < goal_pos_y)
+    {
+        if(pos.y < map_width - 1 && !map->is_edge(map, pos.y + 1, pos.x))
+        {
+            pos.y++;
+        }
+    }
+
+ 
+    // int random = (rand() % 4);
+
+    // switch (random)
+    // {
+    // case 1:
+    //    {
+    //        pos.y++;
+    //        break;
+    //    }
+
+    // case 2:
+    //    {
+    //        pos.x--;
+    //        break;
+    //    }
+
+    // case 3:
+    //    {
+    //        pos.y--;
+    //        break;
+    //    }
+
+    // case 4:
+    //    {
+    //        pos.x++;
+    //        break;
+    //    }
+    // }
 
     if(pos.x == -1 && pos.y == 12)
     {
@@ -64,10 +157,14 @@ void Ghost::move(Map *map)
         pos.x = 0;
     }
 
+    has_moved = 1;
+    update(map, tempx, tempy);
+}
 
-    
->>>>>>> faa90e7f3dd681f7bc4ba2525e2117867a5b55ba
-x, 20 * pos.y);
+
+void Ghost::update()
+{
+    to_draw.setPosition(20 * pos.x, 20 * pos.y);
 }
 
 

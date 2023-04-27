@@ -134,3 +134,17 @@ void Map::create_map()
         map.push_back(tmp_row);
     }
 }
+
+bool Map::is_edge(Map *map, int x, int y) {
+    for (auto obj: map->map[y][x].get_current_objs())
+    {
+        if (obj)
+        {
+            if (obj->name == "Edge")
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}

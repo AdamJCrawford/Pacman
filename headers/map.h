@@ -12,6 +12,8 @@ public:
     Map();
 
     void create_map();
+
+    bool is_edge(Map*, int, int);
 };
 
 #endif

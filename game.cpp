@@ -124,10 +124,8 @@ int main()
                 (static_cast<Pacman *>(character))->reset();
             }
         }
-        // window.draw(cookie.draw());
-        // window.draw(pacdot.draw());
 
-        window.setTitle(std::to_string(score));
+        window.setTitle("Score: " + std::to_string(score));
 
         window.display();
     }
