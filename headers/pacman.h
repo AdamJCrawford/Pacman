@@ -8,6 +8,7 @@ class Pacman : public Sprite {
 public:
 
     bool has_moved = 0;
+    int cookies_eaten = 0;
 
     Pacman(int, int);
 

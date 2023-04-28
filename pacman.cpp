@@ -119,6 +119,11 @@ void Pacman::update(Map *map, int tempx, int tempy)
                         }
                     }   
                 }
+                cookies_eaten++;
+                if(cookies_eaten == 269)
+                {
+                    std::exit(0);
+                }
                 score += (static_cast<Food *>(obj))->get_score_when_eaten();
                 map->map[pos.y][pos.x].del_object(obj);
             }
