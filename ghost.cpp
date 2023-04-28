@@ -17,6 +17,7 @@ Ghost::Ghost(int x, int y, int tmp_ghost_num)
     tmp_pos.y = y;
     pos  = tmp_pos;
     update();
+    
 }
 
 void Ghost::move(Map *map)
@@ -189,6 +190,8 @@ void Ghost::blue_mode()
     is_blue = 1;
     
     to_draw.setFillColor(sf::Color{0xFFA500FF});
+
+    starting_time = clock.restart();
 }
 
 void Ghost::set_color()

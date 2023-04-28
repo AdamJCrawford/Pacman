@@ -20,6 +20,8 @@ class Ghost : public Sprite {
     int y_offset;
     int scatter_x;
     int scatter_y;
+    sf::Clock clock;
+    sf::Time starting_time;
 
 public:
     Ghost(int, int, int);

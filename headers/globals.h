@@ -16,7 +16,4 @@ inline int curr_key = 0;
 
 inline std::vector<GameObject *> characters;
 
-inline sf::Clock clock;
-inline sf::Time starting_time;
-
 #endif
