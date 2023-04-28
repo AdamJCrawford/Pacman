@@ -118,6 +118,7 @@ void Pacman::update(Map *map, int tempx, int tempy)
                             static_cast<Ghost *>(character)->blue_mode();
                         }
                     }   
+                    starting_time = clock.restart();
                 }
                 score += (static_cast<Food *>(obj))->get_score_when_eaten();
                 map->map[pos.y][pos.x].del_object(obj);

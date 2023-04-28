@@ -3,7 +3,7 @@
 #include "headers/sprite.h"
 #include "headers/ghost.h"
 #include <random>
-
+#include <iostream>
 
 Ghost::Ghost(int x, int y, int tmp_ghost_num)
 {
@@ -19,58 +19,13 @@ Ghost::Ghost(int x, int y, int tmp_ghost_num)
     update();
 }
 
-
-// vector<position> Ghost::DFS()
-// {
-
-
-
-    // int starting_pos_x = pos.x;
-    // int starting_pos_y = pos.y;
-
-
-
-    // vector<Node*> current_path;
-
-    // while front.size()
-    // {
-    //     current = front.pop_back();
-    //     if(current-> name == "Pacman")
-    //     {
-    //         return current_path;
-    //     }
-    //     else
-    //     {
-    //         // need to check that these are valid locations
-    //         front.push_back(map.map[current.pos.y][current.pos.x + 1]);
-    //         front.push_back(map.map[current.pos.y - 1][current.pos.x]);
-    //         front.push_back(map.map[current.pos.y][current.pos.x - 1]);
-    //         front.push_back(map.map[current.pos.y + 1][current.pos.x]);
-    //     }
-    // }
-
-// }
-
-/*
-def BFS(problem, repeat_check=False):
-    current_node = Node(problem.start)
-    front = Frontier(current_node)
-    if repeat_check:
-        reached = {}
-    while not front.is_empty():
-        current_node = front.pop()
-        if problem.is_goal(current_node.loc):
-            return current_node
-        if repeat_check:
-            if current_node in reached:
-                continue
-            reached[current_node] = 1
-        front.add(current_node.expand(problem))
-    return None
-*/
-
 void Ghost::move(Map *map)
 {
+    if((clock.getElapsedTime() - starting_time).asSeconds() > 5)
+    {
+        is_blue = 0;
+        set_color();
+    }
     int tempx  = pos.x;
     int tempy  = pos.y;
 
@@ -84,68 +39,92 @@ void Ghost::move(Map *map)
         }
     }
 
-    int goal_pos_x = pacman->pos.x;
-    int goal_pos_y = pacman->pos.y;
-    
-    if(pos.x > goal_pos_x)
-    {
-        if(pos.x != 0 && !map->is_edge(map, pos.y, pos.x - 1))
-        {
-            pos.x--;
-        }
-    }
-    else if(pos.x < goal_pos_y)
-    {
-        if(pos.x < map_width - 1 && !map->is_edge(map, pos.y, pos.x + 1))
-        {
-            pos.x++;
-        }
-    }
 
-    if(pos.y > goal_pos_y && pos.y != 0)
+    int goal_pos_x, goal_pos_y;
+
+    if(is_blue)
     {
-        if(!map->is_edge(map, pos.y - 1, pos.x))
-        {
-            pos.y--;
-        }
+        goal_pos_x = scatter_x;
+        goal_pos_y = scatter_y;
     }
-    else if(pos.y < goal_pos_y)
+    else
     {
-        if(pos.y < map_width - 1 && !map->is_edge(map, pos.y + 1, pos.x))
-        {
-            pos.y++;
-        }
+        goal_pos_x = pacman->pos.x + x_offset;
+        goal_pos_y = pacman->pos.y + y_offset;
     }
 
  
-    // int random = (rand() % 4);
+    can_move_left = (map->is_not_edge(map, pos.x - 1, pos.y) && not_in_recent(position{pos.x - 1, pos.y}));
+    can_move_up = (map->is_not_edge(map, pos.x, pos.y - 1) && not_in_recent(position{pos.x, pos.y - 1}));
+    can_move_right = (map->is_not_edge(map, pos.x + 1, pos.y) && not_in_recent(position{pos.x + 1, pos.y}));
+    can_move_down = (map->is_not_edge(map, pos.x, pos.y + 1) && not_in_recent(position{pos.x, pos.y + 1}));
 
-    // switch (random)
-    // {
-    // case 1:
-    //    {
-    //        pos.y++;
-    //        break;
-    //    }
+    // std::cout << "\n";
 
-    // case 2:
-    //    {
-    //        pos.x--;
-    //        break;
-    //    }
 
-    // case 3:
-    //    {
-    //        pos.y--;
-    //        break;
-    //    }
+    //std::cout << can_move_left << ' ' << can_move_up << ' ' << can_move_right << ' ' << can_move_down << "\n";
+    if(!has_moved)
+    {
 
-    // case 4:
-    //    {
-    //        pos.x++;
-    //        break;
-    //    }
-    // }
+        if(pos.y > goal_pos_y && can_move_up)
+        {
+                pos.y--;
+        }
+
+        else if(pos.y < goal_pos_y && can_move_down)
+        {
+                pos.y++;
+        }
+
+        else if(pos.x > goal_pos_x && can_move_left)
+        {
+                pos.x--;
+        }
+
+        else if(pos.x < goal_pos_x && can_move_right)
+        {
+                pos.x++;
+        }
+
+        else
+        {
+            if(can_move_up)
+            {
+                pos.y--;
+            }
+            else if(can_move_down)
+            {
+                pos.y++;
+            }
+            else if(can_move_left)
+            { 
+                pos.x--;
+            }
+            else if (can_move_right)
+            {
+                pos.x++;
+            }
+        }
+        has_moved = 1;
+
+        if (!(position{tempx, tempy} == position{pos.x, pos.y}))
+        {
+            recent_positions.push_back(position {pos.x, pos.y});
+        }
+        
+
+        if(recent_positions.size() == 6)
+        {
+            recent_positions.erase(recent_positions.begin());
+        }
+        // int i = 0;
+        // for(auto tmp_pos : recent_positions)
+        // {
+        //     std::cout << i << ' ' << tmp_pos.x << ' ' << tmp_pos.y << "\n";
+        //     i++;
+        // }
+    }
+ 
 
     if(pos.x == -1 && pos.y == 12)
     {
@@ -156,8 +135,6 @@ void Ghost::move(Map *map)
     {
         pos.x = 0;
     }
-
-    has_moved = 1;
     update(map, tempx, tempy);
 }
 
@@ -174,12 +151,7 @@ void Ghost::update(Map *map, int tempx, int tempy)
     {
         if (obj)
         {
-            if (obj->name == "Edge")
-            {
-                pos.x = tempx;
-                pos.y = tempy;
-            }
-            else if (obj->name == "Pacman")
+            if (obj->name == "Pacman")
             {
                 if(is_blue)
                 {
@@ -226,24 +198,40 @@ void Ghost::set_color()
     case 1:
        {
            to_draw.setFillColor(sf::Color::Red);
+           x_offset = 0;
+           y_offset = 0;
+           scatter_x = 1;
+           scatter_y = 1;
        }
        break;
 
     case 2:
        {
            to_draw.setFillColor(sf::Color::Cyan);
+           x_offset = 2;
+           y_offset = 0;
+           scatter_x = 23;
+           scatter_y = 1;
        }
        break;
 
     case 3:
        {
            to_draw.setFillColor(sf::Color::Magenta);
+           x_offset = 0;
+           y_offset = 2;
+           scatter_x = 1;
+           scatter_y = 23;
        }
        break;
 
     case 4:
        {
            to_draw.setFillColor(sf::Color::Green);
+           x_offset = -2;
+           y_offset = 0;
+           scatter_x = 23;
+           scatter_y = 23;
            break;
        }
     }
@@ -258,3 +246,15 @@ bool Ghost::blue_status()
 {
     return is_blue;
 }
+
+bool Ghost::not_in_recent(position test_pos)
+{
+    for (auto pos: recent_positions)
+    {
+        if(test_pos == pos)
+        {
+            return false;
+        }
+    }
+    return true;
+} 

@@ -124,7 +124,8 @@ int main()
                 (static_cast<Pacman *>(character))->reset();
             }
         }
-
+        // map.print_map();
+        // std::cout << "\n";
         window.setTitle("Score: " + std::to_string(score));
 
         window.display();

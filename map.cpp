@@ -27,8 +27,8 @@ Map::Map()
         "#......##   #   ###.#...#", // 8
         "#.####..  #####  ...#.#.#", // 9
         "#.......#   1   ###.....#", // 10
-        "###.###.# #   # #...#.###", // 11
-        " .......# #234# #.#..... ", // 12
+        "###.###.#  234  #...#.###", // 11
+        " .......#       #.#..... ", // 12
         "###.#.#.# ##### #.#.#.###", // 13
         "#...#.#.#       #.#.#...#", // 14
         "#.###.#.# ##### #.#.###.#", // 15
@@ -135,16 +135,63 @@ void Map::create_map()
     }
 }
 
-bool Map::is_edge(Map *map, int x, int y) {
-    for (auto obj: map->map[y][x].get_current_objs())
+bool Map::is_not_edge(Map *map, int x, int y) {
+    // std::cout << x << ' ' << y << "\n";
+    //last coordinate is 12, 23
+    if (x >= 0 && x < map_width && y >= 0 && y < map_length)
     {
-        if (obj)
+        for (auto obj: map->map[y][x].get_current_objs())
         {
-            if (obj->name == "Edge")
+            if (obj)
             {
-                return true;
+                if (obj->name == "Edge")
+                {
+                    return false;
+                }
             }
         }
     }
-    return false;
+    return true;
 }
+
+void Map::print_map()
+{
+    for(auto row :map)
+    {
+        for (auto node: row)
+        {
+            for(auto item: node.get_current_objs())
+            {
+                if(item)
+                {
+                    if(item->name == "Edge")
+                    {
+                        std::cout << "#";
+                    }
+                    else if(item->name == "Cookie")
+                    {
+                        std::cout << ".";
+                    }
+                    else if(item->name == "Pacman")
+                    {
+                        std::cout << "P";
+                    }
+                    else if(item->name == "Ghost")
+                    {
+                        std::cout << "1";
+                    }
+                    else if(item->name == "Pacdot")
+                    {
+                        std::cout << "o";
+                    }
+                }
+                else
+                {
+                    std::cout << ' ';
+                }
+            }
+            std::cout << ' ';
+        }
+        std::cout << "\n";
+    }
+}  

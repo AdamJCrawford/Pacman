@@ -13,7 +13,9 @@ public:
 
     void create_map();
 
-    bool is_edge(Map*, int, int);
+    bool is_not_edge(Map*, int, int);
+
+    void print_map();
 };
 
 #endif

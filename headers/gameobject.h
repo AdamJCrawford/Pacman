@@ -8,6 +8,13 @@ struct position
 {
     int x = 0; // Row
     int y = 0; // Col
+
+    inline bool operator==(position a) {
+       if (a.x == x && a.y == y)
+          return true;
+       else
+          return false;
+    }
 };
 
 class GameObject {
