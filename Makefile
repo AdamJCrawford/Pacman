@@ -1,6 +1,6 @@
 
-Pacman: node.o gameobject.o edge.o food.o cookie.o fruit.o pacdot.o sprite.o ghost.o pacman.o game.o map.o
-	g++ node.o gameobject.o edge.o food.o cookie.o fruit.o pacdot.o sprite.o ghost.o pacman.o game.o map.o -o Pacman -lsfml-graphics -lsfml-window -lsfml-system -std=c++17
+Pacman: node.o gameobject.o edge.o food.o cookie.o pacdot.o sprite.o ghost.o pacman.o game.o map.o
+	g++ node.o gameobject.o edge.o food.o cookie.o pacdot.o sprite.o ghost.o pacman.o game.o map.o -o Pacman -lsfml-graphics -lsfml-window -lsfml-system -std=c++17
 
 cookie.o: cookie.cpp headers/cookie.h
 	g++ -c cookie.cpp -std=c++17
@@ -10,9 +10,6 @@ edge.o: edge.cpp headers/edge.h
 
 food.o: food.cpp headers/food.h
 	g++ -c food.cpp -std=c++17
-
-fruit.o: fruit.cpp headers/fruit.h
-	g++ -c fruit.cpp -std=c++17
 
 game.o: game.cpp
 	g++ -c game.cpp -std=c++17
